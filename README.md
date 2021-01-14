@@ -1,6 +1,6 @@
 # Pokemon App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). It is a simple React/Redux application that generates the first 3 pokemon on initial load and allows the user to generate a random pokemon using a "generate random pokemon!" button that fetches a random pokemon from the [PokeAPI](https://pokeapi.co/).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). It is a simple React/Redux application that generates the first 3 pokemon on initial load and allows the user to generate a random pokemon using a "generate random pokemon!" button that fetches a random pokemon from the [PokeAPI](https://pokeapi.co/). It uses [Bootstrap](https://getbootstrap.com/) for simple styling.
 
 ## Available Scripts
 
