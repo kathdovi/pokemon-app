@@ -9,7 +9,7 @@ const mapStateToProps = state => ({
     error: state.pokemon.error
 });
 
-class Main extends React.Component {
+class Main extends Component {
     componentDidMount() {
         this.props.dispatch(fetchPokemon(7));
         this.props.dispatch(fetchPokemon(4));
