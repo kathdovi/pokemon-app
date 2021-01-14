@@ -6,9 +6,13 @@ function Pokemon(props) {
     return (
       <div class="card m-2" style={{ width: "18rem" }}>
         <img
-          src={props.pokemon.sprites.front_default}
+          src={
+            props.pokemon.sprites.front_default
+              ? props.pokemon.sprites.front_default
+              : "https://contentmedia.dornbracht.com/-/media/foundation/products/product_image_not_available.jpg?rev=fcf4993f169c4dca8fd69e873ce29241"
+          }
           class="card-img-top"
-          alt="..."
+          alt="Pokemon"
         />
         <div class="card-body">
           <h5 class="card-title">{props.pokemon.name}</h5>
