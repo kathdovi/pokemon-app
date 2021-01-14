@@ -18,7 +18,7 @@ export const fetchPokemonFailure = error => ({
     payload: { error }
 });
 
-export function fetchPokemon(id, isRandom) {
+export function fetchPokemon(id) {
     return dispatch => {
         dispatch(fetchPokemonBegin());
         return fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
@@ -30,6 +30,28 @@ export function fetchPokemon(id, isRandom) {
             })
             .catch(error => dispatch(fetchPokemonFailure(error)));
     };
+}
+
+export function fetchRandomPokemon() {
+        return (dispatch) => {
+          dispatch(fetchPokemonBegin());
+          return fetch(`https://pokeapi.co/api/v2/pokemon/?limit=2000`)
+            .then(handleErrors)
+            .then((res) => res.json())
+            .then((json) => {
+            dispatch(fetchPokemon(
+              new URL(
+                json.results[
+                  Math.floor(Math.random() * json.results.length)
+                ].url
+              ).pathname.replace("/api/v2/pokemon/", "")
+              .replace("/", "")
+            ));
+            //   dispatch(fetchPokemonSuccess(json));
+              return json;
+            })
+            .catch((error) => dispatch(fetchPokemonFailure(error)));
+        };
 }
 
 function handleErrors(response) {

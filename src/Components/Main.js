@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Pokemon from './Pokemon';
 import { connect } from 'react-redux';
-import { fetchPokemon } from '../redux/ActionCreators';
+import { fetchPokemon, fetchRandomPokemon } from '../redux/ActionCreators';
 
 const mapStateToProps = state => ({
     pokemon: state.pokemon.pokemon,
@@ -29,6 +29,7 @@ class Main extends React.Component {
 
         return (
             <div>
+                <button onClick={e=> this.props.dispatch(fetchRandomPokemon())}>random</button>
                 {pokemon.map(pokemon =>
                     <Pokemon pokemon={pokemon} />
                 )}

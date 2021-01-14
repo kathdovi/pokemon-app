@@ -20,10 +20,11 @@ export default function pokemonReducer(state = initialState, action) {
             };
 
         case FETCH_POKEMON_SUCCESS:
+            
             return {
                 ...state,
                 loading: false,
-                pokemon: [...state.pokemon, action.payload.pokemon]
+                pokemon: state.pokemon.length > 3 ?  [...state.pokemon.slice(0, -1), action.payload.pokemon] : [...state.pokemon, action.payload.pokemon] 
             };
 
         case FETCH_POKEMON_FAILURE:
