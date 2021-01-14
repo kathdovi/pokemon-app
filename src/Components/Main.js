@@ -19,21 +19,38 @@ class Main extends React.Component {
     render() {
         const { error, loading, pokemon } = this.props;
 
-        if (error) {
-            return <div>Error! {error.message}</div>;
-        }
-
-        if (loading) {
-            return <div>Loading...</div>;
-        }
-
         return (
-            <div>
-                <button onClick={e=> this.props.dispatch(fetchRandomPokemon())}>random</button>
-                {pokemon.map(pokemon =>
+          <div>
+            <nav class="navbar sticky-top navbar-dark bg-dark">
+              <div class="container-fluid">
+                <a class="navbar-brand" href="/">
+                  Pokemon Application
+                </a>
+              </div>
+            </nav>
+            <div class="container">
+              <div class="row">
+                <div class="col">
+                  <button
+                    type="button"
+                    class="btn btn-dark m-2"
+                    onClick={(e) => this.props.dispatch(fetchRandomPokemon())}
+                  >
+                    random
+                  </button>
+                </div>
+              </div>
+              {loading ? <div>Loading...</div> : ''}
+              {error ? <div>Error! {error.message}</div> : ''}
+              <div class="row">
+                <div class="col d-flex justify-content-center">
+                  {pokemon.map((pokemon) => (
                     <Pokemon pokemon={pokemon} />
-                )}
+                  ))}
+                </div>
+              </div>
             </div>
+          </div>
         );
     }
 }
