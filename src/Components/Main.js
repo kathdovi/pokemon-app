@@ -28,20 +28,7 @@ class Main extends React.Component {
                 </a>
               </div>
             </nav>
-            <div class="container">
-              <div class="row">
-                <div class="col">
-                  <button
-                    type="button"
-                    class="btn btn-dark m-2"
-                    onClick={(e) => this.props.dispatch(fetchRandomPokemon())}
-                  >
-                    random
-                  </button>
-                </div>
-              </div>
-              {loading ? <div>Loading...</div> : ''}
-              {error ? <div>Error! {error.message}</div> : ''}
+            <div class="container-fluid">
               <div class="row">
                 <div class="col d-flex justify-content-center">
                   {pokemon.map((pokemon) => (
@@ -49,6 +36,19 @@ class Main extends React.Component {
                   ))}
                 </div>
               </div>
+              <div class="row">
+                <div class="col">
+                  <button
+                    type="button"
+                    class="btn btn-dark m-2"
+                    onClick={(e) => this.props.dispatch(fetchRandomPokemon())}
+                  >
+                    generate random pokemon!
+                  </button>
+                </div>
+              </div>
+              {loading ? <div>Loading...</div> : ""}
+              {error ? <div>Error! {error.message}</div> : ""}
             </div>
           </div>
         );
